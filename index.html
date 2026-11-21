@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="My Little Worlds 的照片展页">
+  <title>My Little Worlds</title>
+  <style>
+    :root { color-scheme: light; --ink:#3e2e43; --purple:#5c4561; --lilac:#d7c4d9; --paper:#fffdf7; --line:#c6b4c8; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#faf7f4; color:var(--ink); font:1rem/1.65 "Microsoft YaHei",system-ui,sans-serif; }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible, a:focus-visible { outline:2px solid var(--purple); outline-offset:4px; }
+    .masthead { background:var(--lilac); padding:clamp(30px,7vw,86px) 22px; }
+    .masthead-inner, main { width:min(1060px,100% - 44px); margin:auto; }
+    .masthead-inner { width:min(1060px,100%); }
+    h1,h2,h3 { font-family:Georgia,"Songti SC",serif; font-weight:400; line-height:1.14; }
+    h1 { margin:0; font-size:clamp(42px,9vw,112px); letter-spacing:-.045em; font-style:italic; }
+    .masthead p { margin:13px 0 0; }
+    main { padding:42px 0 70px; }
+    h2 { font-size:clamp(27px,5vw,42px); margin:0 0 20px; }
+    #status { min-height:4em; margin:0; color:#66506a; }
+    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr)); gap:22px; }
+    .record { min-width:0; border:1px solid var(--line); padding:10px; background:var(--paper); text-align:left; color:inherit; }
+    .record:hover { border-color:var(--purple); }
+    .record img { display:block; width:100%; aspect-ratio:3/2; object-fit:contain; background:#f0e9f1; }
+    .record span { display:block; padding-inline:5px; }
+    .record .date, .detail-date { color:#715c75; font-size:14px; margin-top:9px; }
+    .record .title { font:1.27rem/1.35 Georgia,"Songti SC",serif; margin:5px 0; overflow-wrap:anywhere; }
+    dialog { width:min(740px,100% - 24px); max-height:90vh; border:1px solid var(--line); background:var(--paper); color:var(--ink); padding:clamp(14px,4vw,28px); }
+    dialog::backdrop { background:#322237a8; }
+    .detail-header { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .detail-header h2 { margin:0; overflow-wrap:anywhere; }
+    .close { border:1px solid var(--line); padding:4px 12px; background:transparent; color:inherit; }
+    .detail-note { white-space:pre-wrap; overflow-wrap:anywhere; margin:10px 0 16px; }
+    .detail-photos { display:grid; gap:12px; }
+    .detail-photos img { display:block; width:100%; max-height:75vh; object-fit:contain; background:#f0e9f1; }
+    a { color:var(--purple); }
+  </style>
+  <script src="./config.js" defer></script>
+  <script src="./gallery.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <h1>My Little Worlds</h1>
+      <p>把想留住的片刻，放在这里。</p>
+    </div>
+  </header>
+  <main>
+    <h2>照片展页</h2>
+    <p id="status" role="status">正在加载照片…</p>
+    <div class="gallery" id="gallery"></div>
+  </main>
+  <dialog id="record-detail" aria-labelledby="record-title">
+    <div class="detail-header">
+      <h2 id="record-title"></h2>
+      <form method="dialog"><button class="close">关闭</button></form>
+    </div>
+    <div id="record-body"></div>
+  </dialog>
+</body>
+</html>
